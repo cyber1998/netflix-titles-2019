@@ -1,6 +1,6 @@
 import pandas as pd
 
-from app.models import Country, Category, Movie
+from app.models import Country, Category, Title
 
 df = pd.read_csv('data/data.csv')
 
@@ -29,7 +29,7 @@ for category in category_objects:
 Category.objects.bulk_create(category_objects)
 
 for index, row in df.iterrows():
-    Movie.objects.create(
+    Title.objects.create(
         name=row['title'],
         type=row['type'],
         date_added=row['date_added'],
