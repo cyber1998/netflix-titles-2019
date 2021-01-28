@@ -9,16 +9,36 @@ class TitleTestCase(TestCase):
     def setUp(self):
         self.category1 = CategoryFactory()
         self.country1 = CountryFactory()
-        self.title_1 = TitleFactory(countries=[self.country1], categories=[self.category1])
+        self.title_1 = TitleFactory(
+            countries=[self.country1], categories=[self.category1]
+        )
 
         self.category2 = CategoryFactory()
         self.country2 = CountryFactory()
-        self.title_2 = TitleFactory(countries=[self.country2], categories=[self.category2])
+        self.title_2 = TitleFactory(
+            countries=[self.country2], categories=[self.category2]
+        )
 
     def test_list_api(self):
         response = self.client.get('/api/title/', {'format': 'json'})
         self.assertEqual(200, response.status_code)
         self.assertEqual(2, len(response.data['results']))
+
+    def test_get_list_with_category_filters(self):
+        response = self.client.get(
+            '/api/title/',
+            {'format': 'json', 'category_ids': self.category1.pk}
+        )
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(1, len(response.data['results']))
+
+    def test_get_list_with_country_filters(self):
+        response = self.client.get(
+            '/api/title/',
+            {'format': 'json', 'country_ids': self.country1.pk}
+        )
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(1, len(response.data['results']))
 
     def test_get_api(self):
         response = self.client.get(

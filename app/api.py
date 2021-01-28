@@ -37,16 +37,18 @@ class TitleFilterBackend(BaseFilterBackend):
         :return: Queryset after filtering through all the query params.
         """
         country_ids = request.query_params.get('country_ids')
+
         category_ids = request.query_params.get('category_ids')
+
         release_year = request.query_params.get('released_year')
         if country_ids:
-            queryset.filter(countries__in=country_ids)
+            queryset = queryset.filter(countries__in=country_ids.split(","))
 
         if category_ids:
-            queryset.filter(countries__in=category_ids)
+            queryset = queryset.filter(categories__in=category_ids.split(","))
 
         if release_year:
-            queryset.filter(release_year=release_year)
+            queryset = queryset.filter(release_year=release_year)
 
         return queryset
 
