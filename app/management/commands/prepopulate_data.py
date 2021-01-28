@@ -9,6 +9,12 @@ class Command(BaseCommand):
     help = 'This will pre-populate all data from a given csv.'
 
     def handle(self, *args, **options):
+
+        # Delete all existing data
+        Title.objects.all().delete()
+        Country.objects.all().delete()
+        Category.objects.all().delete()
+
         # Read the csv
         df = pd.read_csv('data/data.csv')
         rows = len(df.index)
@@ -59,7 +65,7 @@ class Command(BaseCommand):
 
             title = Title.objects.create(
                 name=row['title'],
-                type=row['type'],
+                type='tv' if row['type'].strip() == 'TV Show' else 'movie',
                 date_added=row['date_added'],
                 release_year=row['release_year'],
                 description=row['description'],

@@ -7,12 +7,18 @@ class Country(models.Model):
     """
     name = models.CharField(max_length=128)
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     """
     The category in which the title was classified
     """
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
 
 
 class Title(models.Model):
@@ -29,6 +35,9 @@ class Title(models.Model):
     description = models.TextField(max_length=384)
     duration = models.CharField(max_length=32)
     release_year = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 
