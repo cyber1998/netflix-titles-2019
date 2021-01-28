@@ -6,6 +6,13 @@ from app.models import Title
 from app.serializers import TitleSerializer
 
 
+class CustomPagination(PageNumberPagination):
+    page_size = 10
+    page_query_param = 'page'
+    page_size_query_param = 'page_size'
+    max_page_size = 50
+
+
 class TitleFilterBackend(BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         country_ids = request.query_params.get('country_ids')
@@ -27,5 +34,7 @@ class TitleApiViewSet(ModelViewSet):
     filter_backends = [TitleFilterBackend]
     http_method_names = ['get', 'post', 'delete']
     serializer_class = TitleSerializer
-    pagination_class = PageNumberPagination
-    queryset = Title.objects.all()
+    pagination_class = CustomPagination
+    queryset = Title.objects.all().order_by('id')
+
+
