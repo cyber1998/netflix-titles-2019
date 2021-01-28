@@ -20,7 +20,9 @@ class Title(models.Model):
     A title instance - contains data about the show on Netflix.
     """
     name = models.CharField(max_length=256, null=False, blank=False)
-    type = models.CharField(choices=('TV Show', 'Movie',), null=False, blank=False)
+    type = models.CharField(choices=[
+        ('tv', 'TV Show'), ('movie', 'Movie')
+    ], null=False, blank=False, max_length=10)
     date_added = models.DateField(auto_now=True)
     countries = models.ManyToManyField(Country)
     categories = models.ManyToManyField(Category)
