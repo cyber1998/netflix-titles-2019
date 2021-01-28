@@ -16,11 +16,10 @@ The following API's are available for use:
  - `/api/category`: Used to Create or Read Categories for those titles.
 
 The following query parameters are available to be used for the Title API (`/api/title`):
-    - `format`: The API is not using any renderer which explicitly returns data in JSON, hence it has to be specified
-    to get a valid response back in the API Client. Normally the format you would use is json, hence
-    `format=json` should always be passed in a GET Request.
-    - `country_ids`: A comma separated list of ids of countries that you can pass to filter titles released on those countries.
-    - `catgegory_ids`: A comma separated list of ids of categories that you can pass to filter titles released on those categories.
-    - `released_year`: A year of the format `YYYY` that you can pass which will return all movies released on that particular year.
+- `format`: The API is not using any renderer which explicitly returns data in JSON, hence it has to be specified
+to get a valid response back in the API Client. Normally the format you would use is json, hence`format=json` should always be passed in a GET Request.
+- `country_ids`: A comma separated list of ids of countries that you can pass to filter titles released on those countries.
+- `catgegory_ids`: A comma separated list of ids of categories that you can pass to filter titles released on those categories.
+- `released_year`: A year of the format `YYYY` that you can pass which will return all movies released on that particular year.
 
 Data source: https://www.kaggle.com/shivamb/netflix-shows
