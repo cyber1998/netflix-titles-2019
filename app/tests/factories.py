@@ -12,8 +12,9 @@ or similar stuff, but especially useful in tests
 
 class TitleFactory(DjangoModelFactory):
     """
-    Post generation is used to populate M2M fields.
-    Documentation Link: https://factoryboy.readthedocs.io/en/stable/recipes.html#simple-many-to-many-relationship
+    Post generation  decorator is used to populate M2M fields
+    using Factory boy.Documentation Link:
+    https://factoryboy.readthedocs.io/en/stable/recipes.html#simple-many-to-many-relationship
     """
 
     name = factory.Sequence(lambda n: 'Movie Title {}'.format(n))

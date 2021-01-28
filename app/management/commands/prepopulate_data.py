@@ -19,6 +19,8 @@ class Command(BaseCommand):
         df = pd.read_csv('data/data.csv')
         rows = len(df.index)
 
+        # For countries and categories, we just add them in a set
+        # by cleaning the data up and store them for later use.
         countries = set()
         for row in df['country']:
             if type(row) != str:
@@ -74,5 +76,6 @@ class Command(BaseCommand):
             title.countries.set(country_ids)
             title.categories.set(category_ids)
             title.save()
+            # For the progress bar
             bar.next()
         bar.finish()

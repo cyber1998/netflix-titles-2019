@@ -21,6 +21,13 @@ class TitleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_representation(self, instance):
+        """
+        We return id and name for country and category as well. While
+        this would have been achieved better using the Serializer, this
+        is sufficient for our purposes.
+        :param instance: Title Instance
+        :return: Dictionary containing the title instance
+        """
         return {
             "id": instance.pk,
             "name": instance.name,
