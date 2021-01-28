@@ -43,7 +43,8 @@ for index, row in df.iterrows():
         type=row['type'],
         date_added=row['date_added'],
         release_year=row['release_year'],
-        description=row['description']
+        description=row['description'],
+        duration=row['duration']
     )
 
     title.countries.add(country_ids)

@@ -1,6 +1,6 @@
-from app.models import Country, Movie, Category
+from app.models import Country, Title, Category
 
-Movie.objects.all().delete()
+Title.objects.all().delete()
 Country.objects.all().delete()
 Category.objects.all().delete()
 

@@ -17,7 +17,7 @@ class Category(models.Model):
 
 class Title(models.Model):
     """
-    A title instance - contains data about the
+    A title instance - contains data about the show on Netflix.
     """
     name = models.CharField(max_length=256, null=False, blank=False)
     type = models.CharField(choices=('TV Show', 'Movie',), null=False, blank=False)
@@ -25,6 +25,7 @@ class Title(models.Model):
     countries = models.ManyToManyField(Country)
     categories = models.ManyToManyField(Category)
     description = models.TextField(max_length=384)
+    duration = models.CharField(max_length=32)
     release_year = models.IntegerField(null=True, blank=True)
 
 
