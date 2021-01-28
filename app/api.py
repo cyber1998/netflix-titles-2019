@@ -2,8 +2,9 @@ from rest_framework.filters import BaseFilterBackend
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
 
-from app.models import Title
-from app.serializers import TitleSerializer
+from app.models import Title, Country, Category
+from app.serializers import TitleSerializer, CountrySerializer, \
+    CategorySerializer
 
 
 class CustomPagination(PageNumberPagination):
@@ -70,5 +71,19 @@ class TitleApiViewSet(ModelViewSet):
     serializer_class = TitleSerializer
     pagination_class = CustomPagination
     queryset = Title.objects.all().order_by('id')
+
+
+class CountryViewSet(ModelViewSet):
+    http_method_names = ['get', 'post']
+    serializer_class = CountrySerializer
+    queryset = Country.objects.all().order_by('id')
+    pagination_class = CustomPagination
+
+
+class CategoryViewSet(ModelViewSet):
+    http_method_names = ['get', 'post']
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all().order_by('id')
+    pagination_class = CustomPagination
 
 
