@@ -67,7 +67,7 @@ class TitleApiViewSet(ModelViewSet):
     # view cleaner.
 
     filter_backends = [TitleFilterBackend]
-    http_method_names = ['get', 'post', 'delete']
+    http_method_names = ['get', 'post', 'put', 'delete']
 
     # Adding a serializer to handle our data serialization problems.
     serializer_class = TitleSerializer
