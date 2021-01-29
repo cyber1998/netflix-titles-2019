@@ -72,7 +72,9 @@ class TitleApiViewSet(ModelViewSet):
     # Adding a serializer to handle our data serialization problems.
     serializer_class = TitleSerializer
     pagination_class = CustomPagination
-    queryset = Title.objects.all().order_by('id')
+    queryset = Title.objects.all().order_by('id').prefetch_related(
+        'countries', 'categories'
+    )
 
 
 class CountryViewSet(ModelViewSet):
