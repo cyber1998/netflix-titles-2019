@@ -23,4 +23,41 @@ to get a valid response back in the API Client. Normally the format you would us
 - `catgegory_ids`: A comma separated list of ids of categories that you can pass to filter titles released on those categories.
 - `released_year`: A year of the format `YYYY` that you can pass which will return all movies released on that particular year.
 
+
+Example request:
+```http request
+GET http://localhost:8000/api/title/599/?format=json
+```
+
+```json
+{
+   "id":599,
+   "name":"3%",
+   "type":"tv",
+   "date_added":"2021-01-29",
+   "description":"In a future where the elite inhabit an island paradise far from the crowded slums, you get one chance to join the 3% saved from squalor.",
+   "duration":"4 Seasons",
+   "release_year":2020,
+   "countries":[
+      {
+         "id":155,
+         "name":"Brazil"
+      }
+   ],
+   "categories":[
+      {
+         "id":157,
+         "name":"TV Sci-Fi & Fantasy"
+      },
+      {
+         "id":164,
+         "name":"TV Dramas"
+      },
+      {
+         "id":185,
+         "name":"International TV Shows"
+      }
+   ]
+}
+```
 Data source: https://www.kaggle.com/shivamb/netflix-shows
