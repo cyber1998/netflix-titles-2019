@@ -6,9 +6,10 @@ kaggle to prepopulate the database.
 ### Steps to run the app:
 1. Make sure you are working inside a fresh python 3.7 virtual environment. 
 2. Install all the dependencies you need using `pip install -r requirements.txt`
-3. Pre-populate the database with the management command `python manage.py prepopulate_data`
-4. Run the server using `python manage.py runserver`
-5. Now you can start using an API Client (like Postman) to test the APIs.
+3. Use `python manage.py migrate` to create all the tables.
+4. Pre-populate the database with the management command `python manage.py prepopulate_data`
+5. Run the server using `python manage.py runserver`
+6. Now you can start using an API Client (like Postman) to test the APIs.
 
 The following API's are available for use:
  - `/api/title/`: Used to Create, Read, Delete Titles.
